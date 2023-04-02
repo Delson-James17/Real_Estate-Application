@@ -1,0 +1,39 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+
+}
+
+.homeBody {
+    background-image: url(../lib/img/kuala.jpg);
+}
+
+.loginBody {
+    background-image: url(../lib/img/kuala.jpg);
+}
+
+.registerBody {
+    background-image: url(../lib/img/kuala.jpg);
+}
+
+body {
+    margin-bottom: 60px;
+    
+}
+
+.propertyHeader {
+    width: 100%;
+    height: 300px;
+    background-image: url(../lib/img/office.jpg);
+    object-fit: cover;
+}

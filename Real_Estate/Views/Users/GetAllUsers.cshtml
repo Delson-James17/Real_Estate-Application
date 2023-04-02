@@ -1,0 +1,43 @@
+﻿
+@model List<ApplicationUser>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Hello world</h1>
+@foreach(var users in Model)
+{
+
+    <table class="table" style="background:Yellow">
+  <thead>
+    <tr>
+      <th scope="col">Full Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">PhoneNumber</th>
+      <th scope="col">Address</th>
+      <th scope="col">Url Image</th>
+      <th scope="col">Email</th>
+      <th scope="col">UserName</th>
+      <th scope="col">Roles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>@users.Name</td>
+      <td>@users.Age</td>
+      <td>@users.DOB</td>
+      <td>@users.Address</td>
+      <td>@users.PhoneNumber</td>
+      <td>@users.UrlImages</td>
+      <td>@users.Email</td>
+      <td>@users.UserName</td>
+      <td></td>
+      <td><a asp-controller="Users" asp-action="Details" asp-route-userId="@users.Id">View</a></td>
+      <td><a asp-controller="Users" asp-action="Update" asp-route-userId="@users.Id">Edit</a></td>
+      <td><a asp-controller="Users" asp-action="Delete" asp-route-userId="@users.Id">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    }

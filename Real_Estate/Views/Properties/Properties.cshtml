@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Real_Estate.Models.Property>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .propertyButton{
+        outline: 0;
+        grid-gap: 8px;
+        align-items: center;
+        background-color: #1e88e5;
+        text-decoration: none;
+        color: #000;
+        border: 1px solid #000;
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-flex;
+        flex-shrink: 0;
+        font-size: 16px;
+        gap: 8px;
+        justify-content: center;
+        line-height: 1.5;
+        overflow: hidden;
+        padding: 12px 16px;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        transition: all .14s ease-out;
+        white-space: nowrap;
+        margin-top: 30px;
+        : hover
+
+    {
+        box-shadow: 4px 4px 0 #000;
+        transform: translate(-4px,-4px);
+    }
+
+    :focus-visible {
+        outline-offset: 1px;
+    }
+
+    }
+
+    a.propertyButton{
+        text-decoration: none;
+        color: white;
+    }
+
+</style>
+
+<h1 style="color: white">Properties</h1>
+
+
+<div class="propertyHeader">
+
+</div>
+
+
+
+<div class="container py-5">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+                <div class="card">
+                    <div class="d-flex justify-content-between p-3">
+                    </div>
+                    <img src=" @Html.DisplayFor(modelItem => item.UrlImages)"
+                         class="card-img-top" alt="Laptop" />
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            @* <p class="small"><a href="#!" class="text-muted">@Html.DisplayFor(modelItem => item.Propertytypes.Name)</a></p> *@
+                            @*<p class="small text-danger"><s>$1099</s></p>*@
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5 class="mb-0">@Html.DisplayFor(modelItem => item.Name)</h5>
+                            <h5 class="text-dark mb-0"><b>Sale</b> ₱ @Html.DisplayFor(modelItem => item.PriceifSale)</h5>
+                            <h5 class="text-dark mb-0"><b>Rent</b> ₱ @Html.DisplayFor(modelItem => item.PriceifRent)</h5>
+                        </div>
+                        <div>
+                            <h6 class="text-dark mb-0"> Address: @Html.DisplayFor(modelItem => item.Address)</h6>
+                            <h6 class="text-dark mb-0"> Owner:  @Html.DisplayFor(modelItem => item.owner.Name)</h6>
+                        </div>
+
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    </div>
+                </div>
+            </div>
+
+        }
+
+

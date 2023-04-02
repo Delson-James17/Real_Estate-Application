@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IdentityRole
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form method="post" asp-action="Create" asp-controller="Role">
+    <!-- need of form element in HTML 5-->
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+    </div>
+    <button type="submit">Create</button>
+</form>
