@@ -1,117 +1,94 @@
-﻿@using Real_Estate.ViewModels;
+@using Real_Estate.ViewModels;
 @model RegisterUserViewModel
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
-<section class="vh-100 bg-image">
-    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                    <div class="card" style="border-radius: 15px;">
-                        <div class="card-body p-5">
-                            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                            <form asp-controller="Account" asp-action="Register" method="post">
-                                <div asp-validation-summary="All" class="text-danger"></div>
-                                <div class="form-outline mb-4">
-                                    <input asp-for="Name" id="form3Example1cg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example1cg">Your Name</label>
-                                    <span asp-validation-for="Name"></span>
-                                </div>
-                                <div class="mb-4 pb-2">
-                                    <div class="form-outline form-white">
-                                        <input asp-for="Address" id="form3Examplea6" class="form-control form-control-lg" />
-                                        <label class="form-label" for="form3Examplea6">Address</label>
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-5 mb-4 pb-2">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Glassmorphism login Form Tutorial in html css</title>
 
-                                        <div class="form-outline form-white">
-                                            <input asp-for="Age" id="form3Examplea7" class="form-control form-control-lg" />
-                                            <label class="form-label" for="form3Examplea7"> Age</label>
-                                            <span asp-validation-for="Age"></span>
-                                        </div>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    @*    <link href="~/css/site.css" rel="stylesheet" />*@
+    <!--Stylesheet-->
 
-                                    </div>
-                                    <div class="col-md-7 mb-4 pb-2">
+</head>
+<body class="login-register-Body">
+<form asp-controller="Account" asp-action="Register" method="post">
+    <h3>Register Here</h3>
 
-                                        <div class="form-outline form-white">
-                                            <input asp-for="PhoneNumber" id="form3Examplea8" class="form-control form-control-lg" />
-                                            <label class="form-label" for="form3Examplea8">Phone Number</label>
-                                        </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <label class="form-label" for="form3Example1cg">Full name</label>
+    <input asp-for="Name" id="form3Example1cg" class="form-control form-control-lg" placeholder="First Name, Middle Initial, Last Name"/>
+    <span asp-validation-for="Name"></span>
 
-                                    </div>
-                                </div>
-                                <div class="mb-4 pb-2">
-                                    <div class="form-outline form-white">
-                                        <input asp-for="DOB" id="form3Examplea6" class="form-control form-control-lg" />
-                                        <label class="form-label" for="form3Examplea6">Date of Birth</label>
-                                        <span asp-validation-for="DOB"></span>
-                                    </div>
-                                </div>
-                                <div class="mb-4 pb-2">
-                                    <div class="form-outline form-white">
-                                        <input asp-for="UrlImages" id="form3Examplea6" class="form-control form-control-lg" />
-                                        <label class="form-label" for="form3Examplea6">Url Images</label>
-                                        <span asp-validation-for="UrlImages"></span>
-                                    </div>
-                                </div>
-                                <div class="mb-4 pb-2">
-                                    <div class="form-outline form-white">
-                                        <input asp-for="UserName" id="form3Examplea6" class="form-control form-control-lg" />
-                                        <label class="form-label" for="form3Examplea6">UserName</label>
-                                        <span asp-validation-for="UserName"></span>
-                                    </div>
-                                </div>
 
-                                <div class="form-outline mb-4">
-                                    <input asp-for="Email" id="form3Example3cg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example3cg">Your Email</label>
-                                    <span asp-validation-for="Email"></span>
-                                </div>
+    <label class="form-label" for="form3Examplea6">Address</label>
+    <input asp-for="Address" id="form3Examplea6" class="form-control form-control-lg" placeholder="Enter Address"/>
 
-                                <div class="form-outline mb-4">
-                                    <input asp-for="Password" id="form3Example4cg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example4cg">Password</label>
-                                    <span asp-validation-for="Password"></span>
-                                </div>
 
-                                <div class="form-outline mb-4">
-                                    <input asp-for="ConfirmPassword" id="form3Example4cdg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example4cdg">Repeat your password</label>
-                                    <span asp-validation-for="ConfirmPassword"></span>
-                               @* </div>
-                                <div class="form-outline mb-4">
-                                    <select asp-for="Role" id="form3Example3cg" class="form-select form-select-lg" >
-                                        <option disabled selected> Select Role</option>
-                                    </select>
-                                    <label class="form-label" for="form3Example3cg">Roles </label>
-                                    <span asp-validation-for="Role"></span>
-                                </div>*@
+    <label class="form-label" for="form3Examplea7">Age</label>
+        <input asp-for="Age" id="form3Examplea7" class="form-control form-control-lg" placeholder="Enter Age" />
+    <span asp-validation-for="Age"></span>
 
-                                <div class="d-flex justify-content-center">
-                                    <button type="submit"
-                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                                        Register
-                                    </button>
-                                </div>
 
-                                <p class="text-center text-muted mt-5 mb-0">
-                                    Have already an account? <a asp-action="Login"
-                                                                class="fw-bold text-body"><u>Login here</u></a>
-                                </p>
+    <label class="form-label" for="form3Examplea8">Phone Number</label>
+        <input asp-for="PhoneNumber" id="form3Examplea8" class="form-control form-control-lg" placeholder="Enter Phone Number" />
 
-                            </form>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <label class="form-label" for="form3Examplea6">Date of Birth</label>
+        <input asp-for="DOB" id="form3Examplea6" class="form-control form-control-lg" placeholder="MM/DD/YYYY" />
+    <span asp-validation-for="DOB"></span>
+
+
+    <label class="form-label" for="form3Examplea6">URL Image</label>
+    <input asp-for="UrlImages" id="form3Examplea6" class="form-control form-control-lg" />
+    <span asp-validation-for="UrlImages"></span>
+
+
+    <label class="form-label" for="form3Examplea6">UserName</label>
+        <input asp-for="UserName" id="form3Examplea6" class="form-control form-control-lg" placeholder="Enter Username" />
+    <span asp-validation-for="UserName"></span>
+
+
+    <label class="form-label" for="form3Example3cg">Email</label>
+    <input asp-for="Email" id="form3Example3cg" class="form-control form-control-lg" placeholder="Ex. juandelacruz@gmail.com" />
+    <span asp-validation-for="Email"></span>
+
+
+    <label class="form-label" for="form3Example4cg">Password</label>
+        <input asp-for="Password" id="form3Example4cg" class="form-control form-control-lg" placeholder="Enter Password" />
+    <span asp-validation-for="Password"></span>
+
+
+    <label class="form-label" for="form3Example4cdg">Confirm Password</label>
+        <input asp-for="ConfirmPassword" id="form3Example4cdg" class="form-control form-control-lg" placeholder="Confirm Password" />
+    <span asp-validation-for="ConfirmPassword"></span>
+
+
+
+@*    <select asp-for="Role" id="form3Example3cg" class="form-select form-select-lg">
+        <option disabled selected> Select Role</option>
+    </select>
+    <label class="form-label" for="form3Example3cg">Roles </label>
+    <span asp-validation-for="Role"></span>*@
+
+    <div class="buttonDiv">
+    <button type="submit">Register</button>
         </div>
-    </div>
-</section>
+
+    <p class="text-center text-muted mt-5 mb-0">
+        Have already an account? <a asp-action="Login"
+                                    class="fw-bold text-body"><u>Login here</u></a>
+    </p>
+
+
+</form>
+</body>
