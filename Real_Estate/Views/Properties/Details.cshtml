@@ -1,4 +1,4 @@
-﻿@model Real_Estate.Models.Property
+@model Real_Estate.Models.Property
 
 @{
     ViewData["Title"] = "Details";
@@ -6,60 +6,197 @@
 
 <h1>Details</h1>
 
-<div class="container py-5">
-    <div class="row justify-content-center mb-3">
-        <div class="col-md-12 col-xl-10">
-            <div class="card shadow-0 border rounded-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
-                            <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                                <img src="@Html.DisplayFor(model => model.UrlImages)"
-                                     class="w-100" />
-                                <a href="#!">
-                                    <div class="hover-overlay">
-                                        <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
-                                    </div>
-                                </a>
+    <style>
+        .section {
+    padding: 100px 0;
+    position: relative;
+}
+.gray-bg {
+    background-color: #f5f5f5;
+}
+img {
+    max-width: 100%;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+/* About Me 
+---------------------*/
+.about-text h3 {
+  font-size: 45px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+  .about-text h3 {
+    font-size: 35px;
+  }
+
+.about-text h6 {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+  .about-text h6 {
+    font-size: 18px;
+  }
+
+.about-text p {
+  font-size: 18px;
+  max-width: 450px;
+}
+.about-text p mark {
+  font-weight: 600;
+}
+
+.about-list {
+  padding-top: 10px;
+}
+.about-list .media {
+  padding: 5px 0;
+}
+.about-list label {
+  font-weight: 600;
+  width: 88px;
+  margin: 0;
+  position: relative;
+}
+.about-list label:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 11px;
+  width: 1px;
+  height: 12px;
+  -moz-transform: rotate(15deg);
+  -o-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+  -webkit-transform: rotate(15deg);
+  transform: rotate(15deg);
+  margin: auto;
+  opacity: 0.5;
+}
+.about-list p {
+  margin: 0;
+  font-size: 15px;
+}
+
+  .about-avatar {
+    margin-top: 30px;
+  }
+
+
+.about-section .counter {
+  padding: 22px 20px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+.about-section .counter .count-data {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.about-section .counter .count {
+  font-weight: 700;
+  color: #20247b;
+  margin: 0 0 5px;
+}
+.about-section .counter p {
+  font-weight: 600;
+  margin: 0;
+}
+mark {
+    background-image: linear-gradient(rgba(252, 83, 86, 0.6), rgba(252, 83, 86, 0.6));
+    background-size: 100% 3px;
+    background-repeat: no-repeat;
+    background-position: 0 bottom;
+    background-color: transparent;
+    padding: 0;
+    color: currentColor;
+}
+.theme-color {
+    color:black;
+}
+.dark-color {
+    color: #20247b;
+}
+
+.detailsButton{
+        margin-top: 25px;
+        width: 160px;
+        background-color: #abcdef;
+        position: center;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+}
+
+    .detailsbuttonDiv{
+        margin-left: 10px;
+    }
+
+    .details-button-text{
+        color: black;
+    }
+    
+
+    </style>
+<body class="propertyBody">
+<section class="section about-section gray-bg" id="about">
+    <div class="container">
+        <div class="row align-items-center flex-row">
+            <div class="col-lg-6">
+                <div class="about-avatar">
+                    <img src="@Html.DisplayFor(model => model.UrlImages)" title="" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-text go-to">
+                    <h3 class="dark-color">@Html.DisplayFor(model => model.Name)</h3>
+                    <h6 class="theme-color lead">Address: @Html.DisplayFor(model => model.Address)</h6>
+                    <p>Owner: @Html.DisplayFor(model => model.owner.Name)</p>
+                    <p> @Html.DisplayFor(model => model.Description)</p>
+                    <div class="row about-list">
+                        <div class="col-md-6">
+                            <div class="media">
+                                <label>Sale Price:</label>
+                                <p>₱@Html.DisplayFor(model => model.PriceifSale)</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-6 col-xl-6">
-                            <h5>  @Html.DisplayFor(model => model.Name)</h5>
-                            <di class="mb-2 text-bg-black ">
-                                <span><b class="text-danger">Sale: </b> <b class="text-black">₱@Html.DisplayFor(model => model.PriceifSale)</b> </span>
-                                <span><b class="text-danger">Rent: </b> <b class="text-black">₱@Html.DisplayFor(model => model.PriceifRent)</b> </span>
-                            </di>
-                            
-                            <div class="mt-1 mb-0 text-muted">
-                                <p>Owner: @Html.DisplayFor(model => model.owner.Name)</p>
-                                <p>
-                                    Address: @Html.DisplayFor(model => model.Address)
-                                </p>
+                        <div class="col-md-6">
+                            <div class="media">
+                                <label>Rent Price:</label>
+                                <p>₱@Html.DisplayFor(model => model.PriceifRent)</p>
                             </div>
-                            <div class="mb-2 text-muted small">
-                                <span>Unique design</span>
-                                <span class="text-primary"> • </span>
-                                <span>For men</span>
-                                <span class="text-primary"> • </span>
-                                <span>Casual<br /></span>
-                            </div>
-                            <p class="text-truncate mb-4 mb-md-0">
-                                @Html.DisplayFor(model => model.Description)
-                            </p>
                         </div>
-                        <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
-                            <div class="d-flex flex-column mt-4">
-                                <button class="btn btn-outline-primary btn-sm mt-2" type="button"> <a asp-controller="Appointments" asp-action="Create"> Set Appointment</a> |</button>
-                                <button class="btn btn-outline-primary btn-sm mt-2" type="button">
-                                    <a asp-action="Properties">Back to List</a>
-                                </button>
+                        <div class="col-md-6">
+                            <div class="media">
+                                <div class="detailsbuttonDiv">
+                                    <button class="detailsButton"> <a class="details-button-text" asp-controller="Appointments" asp-action="Create" style="text-decoration: none;">Set Appointment</a></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="media">
+                                <div class="detailsbuttonDiv">
+                                    <button class="detailsButton"> <a class="details-button-text" asp-action="Properties" style="text-decoration: none;">Back to List</a></button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-<div>
+</section>
 
-   
+</body>
+
+
+
+
+
