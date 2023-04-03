@@ -1,68 +1,75 @@
-﻿@model IEnumerable<Real_Estate.Models.Property>
+@model IEnumerable<Real_Estate.Models.Property>
 
 @{
     ViewData["Title"] = "Index";
 }
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Glassmorphism login Form Tutorial in html css</title>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    @*    <link href="~/css/site.css" rel="stylesheet" />*@
+    <!--Stylesheet-->
+
+</head>
 <style>
-    .propertyButton{
-        outline: 0;
-        grid-gap: 8px;
-        align-items: center;
-        background-color: #1e88e5;
-        text-decoration: none;
-        color: #000;
-        border: 1px solid #000;
-        border-radius: 4px;
-        cursor: pointer;
-        display: inline-flex;
-        flex-shrink: 0;
-        font-size: 16px;
-        gap: 8px;
-        justify-content: center;
-        line-height: 1.5;
-        overflow: hidden;
-        padding: 12px 16px;
-        text-decoration: none;
-        text-overflow: ellipsis;
-        transition: all .14s ease-out;
-        white-space: nowrap;
-        margin-top: 30px;
-        : hover
-
-    {
-        box-shadow: 4px 4px 0 #000;
-        transform: translate(-4px,-4px);
-    }
-
-    :focus-visible {
-        outline-offset: 1px;
-    }
-
-    }
-
-    a.propertyButton{
-        text-decoration: none;
-        color: white;
-    }
 
 </style>
-
-<h1 style="color: white">Properties</h1>
-
-
-<div class="propertyHeader">
-
-</div>
-
+<body class="propertyBody">
+    <div class="propertyHeader">
+         <div class="container-property-header">
+            <img class="propertyImage" src="~/lib/img/townBg.jpg">
+            <h1 class="centered">Find a place you can call Home</h1>
+         </div>
 
 
+    </div>
 <div class="container py-5">
     <div class="row">
         @foreach (var item in Model)
         {
             <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="card">
+                    <section class="articles">
+                        <article>
+                            <div class="article-wrapper">
+                                <figure>
+                                    <img src="@Html.DisplayFor(modelItem => item.UrlImages)" alt="" />
+                                </figure>
+                                <div class="article-body">
+                                    <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+                                    <p>
+                                        Address: @Html.DisplayFor(modelItem => item.Address)
+                                    </p>
+                                    <p>
+                                        Owner: @Html.DisplayFor(modelItem => item.Address)
+                                    </p>
+                                    <div class="row about-list">
+                                    <div class="col-md-6">
+                                        <div class="media">
+                                            <label>Sale Price:</label>
+                                                <p>₱@Html.DisplayFor(modelItem => item.PriceifSale)</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="media">
+                                            <label>Rent Price:</label>
+                                                <p>₱@Html.DisplayFor(modelItem => item.PriceifRent)</p>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="read-more">
+                                        Details <span class="sr-only">about this is some title</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+@*                <div class="card">
                     <div class="d-flex justify-content-between p-3">
                     </div>
                     <img src=" @Html.DisplayFor(modelItem => item.UrlImages)"
@@ -70,7 +77,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             @* <p class="small"><a href="#!" class="text-muted">@Html.DisplayFor(modelItem => item.Propertytypes.Name)</a></p> *@
-                            @*<p class="small text-danger"><s>$1099</s></p>*@
+                            @*<p class="small text-danger"><s>$1099</s></p>
                         </div>
 
                         <div class="d-flex justify-content-between mb-3">
@@ -85,9 +92,11 @@
 
                         <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     </div>
-                </div>
+                </div>*@
             </div>
 
         }
+</div>
 
-
+</div>
+</body>
