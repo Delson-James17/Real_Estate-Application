@@ -12,7 +12,7 @@ using Real_Estate.Models;
 
 namespace Real_Estate.Controllers
 {
-    [Authorize(Roles = "Administrator, Client, Owner")]
+   
     public class PropertiesController : Controller
     {
         private readonly RealEstateDbContext _context;
@@ -23,11 +23,13 @@ namespace Real_Estate.Controllers
         }
 
         // GET: Properties
+        [Authorize(Roles = "Admin, Owner")]
         public async Task<IActionResult> Index()
         {
             var realEstateDbContext = _context.Properties.Include(p => p.Propertytypes).Include(p => p.owner);
             return View(await realEstateDbContext.ToListAsync());
         }
+        [Authorize(Roles = "Admin, Client, Owner")]
         public async Task<IActionResult> Properties()
         {
             var realEstateDbContext = _context.Properties.Include(p => p.Propertytypes).Include(p => p.owner);
@@ -55,7 +57,7 @@ namespace Real_Estate.Controllers
 
             return View(@property);
         }
-
+        [Authorize(Roles = "Admin, Owner")]
         // GET: Properties/Create
         public IActionResult Create()
         {
@@ -63,7 +65,7 @@ namespace Real_Estate.Controllers
             ViewData["ownerID"] = new SelectList(_context.Owners, "Id", "Name","Price");
             return View();
         }
-
+        [Authorize(Roles = "Admin, Owner")]
         // POST: Properties/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -81,7 +83,7 @@ namespace Real_Estate.Controllers
             ViewData["ownerID"] = new SelectList(_context.Owners, "Id", "Id", @property.ownerID);
             return View(@property);
         }
-
+        [Authorize(Roles = "Admin, Owner")]
         // GET: Properties/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -136,7 +138,7 @@ namespace Real_Estate.Controllers
             ViewData["ownerID"] = new SelectList(_context.Owners, "Id", "Id", @property.ownerID);
             return View(@property);
         }
-
+        [Authorize(Roles = "Admin, Owner")]
         // GET: Properties/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

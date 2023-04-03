@@ -1,18 +1,18 @@
-﻿@using Microsoft.AspNetCore.Identity;
-@model IdentityRole
+﻿@using Real_Estate.ViewModels;
+@model RoleViewModel
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
+
 <form method="post" asp-action="Create" asp-controller="Role">
-    <!-- need of form element in HTML 5-->
+    <h2>Create Roles</h2>
     <div asp-validation-summary="All" class="text-danger"></div>
-    <div>
-        <label asp-for="Name"></label>
-        <input asp-for="Name" />
+    <div class="form-group">
+        <label for="exampleInputEmail1">Roles</label>
+        <input asp-for="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Role">
         <span asp-validation-for="Id" class="text-danger"></span>
-    </div>
     </div>
     <button type="submit">Create</button>
 </form>

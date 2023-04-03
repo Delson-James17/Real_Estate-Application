@@ -51,21 +51,14 @@ namespace Real_Estate.Data
                         new PropertyTypes()
                         {
                             Name="Sale",
-                            Price =200.00,
                             Description="Sale Description"
                         },
                         new PropertyTypes()
                         {
                             Name="Rent",
-                            Price =20.00,
                             Description="Per Month"
                         },
-                        new PropertyTypes()
-                        {
-                            Name="Rent",
-                            Price =2.00,
-                            Description="Per Day"
-                        }
+                      
                     });
                     context.SaveChanges();
                 }

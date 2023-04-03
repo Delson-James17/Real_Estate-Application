@@ -12,8 +12,8 @@ using Real_Estate.Data;
 namespace Real_Estate.Migrations
 {
     [DbContext(typeof(RealEstateDbContext))]
-    [Migration("20230401164342_thirdCommit")]
-    partial class thirdCommit
+    [Migration("20230403061031_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -402,9 +402,6 @@ namespace Real_Estate.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

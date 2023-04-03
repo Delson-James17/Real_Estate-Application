@@ -10,6 +10,11 @@ namespace Real_Estate.Data
         public RealEstateDbContext(DbContextOptions<RealEstateDbContext> options) : base(options)
         {
         }
+
+        public RealEstateDbContext()
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=ReDB;Integrated Security=True;";
