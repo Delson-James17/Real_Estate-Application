@@ -71,7 +71,7 @@ namespace Real_Estate.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Address,UrlImages,Price,PropertytypesID,ownerID")] Property @property)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Address,UrlImages,PriceifSale,PriceifRent,PropertytypesID,ownerID")] Property @property)
         {
             if (ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace Real_Estate.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Address,UrlImages,Price,PropertytypesID,ownerID")] Property @property)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Address,UrlImages,PriceifSale,PriceifRent,PropertytypesID,ownerID")] Property @property)
         {
             if (id != @property.Id)
             {

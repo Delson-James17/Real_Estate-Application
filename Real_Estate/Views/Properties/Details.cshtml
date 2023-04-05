@@ -163,13 +163,13 @@ mark {
                         <div class="col-md-6">
                             <div class="media">
                                 <label>Sale Price:</label>
-                                <p>₱@Html.DisplayFor(model => model.PriceifSale)</p>
+                                <p>₱ @Html.DisplayFor(model => model.PriceifSale)</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="media">
                                 <label>Rent Price:</label>
-                                <p>₱@Html.DisplayFor(model => model.PriceifRent)</p>
+                                <p>₱ @Html.DisplayFor(model => model.PriceifRent)</p>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -186,6 +186,14 @@ mark {
                                 </div>
                             </div>
                         </div>
+                            <div class="col-md-6">
+                                <div class="media">
+                                    <div class="detailsbuttonDiv">
+                                        <button class="detailsButton"> <a class="details-button-text" asp-action="Edit" asp-route-id="@Model.Id" style="text-decoration: none;">Edit</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
                     </div>
                 </div>
             </div>
