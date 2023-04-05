@@ -29,12 +29,13 @@ namespace Real_Estate.Controllers
             var realEstateDbContext = _context.Properties.Include(p => p.Propertytypes).Include(p => p.owner);
             return View(await realEstateDbContext.ToListAsync());
         }
-        [Authorize(Roles = "Admin, Client, Owner")]
+       
         public async Task<IActionResult> Properties()
         {
             var realEstateDbContext = _context.Properties.Include(p => p.Propertytypes).Include(p => p.owner);
             return View(await realEstateDbContext.ToListAsync());
         }
+        [Authorize(Roles = "Admin, Client, Owner")]
 
         // GET: Properties/Details/5
         public async Task<IActionResult> Details(int? id)

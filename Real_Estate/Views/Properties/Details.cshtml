@@ -1,8 +1,10 @@
+@using Microsoft.AspNetCore.Identity;
 @model Real_Estate.Models.Property
 
 @{
     ViewData["Title"] = "Details";
 }
+@inject SignInManager<ApplicationUser> _signInManager
 
 <h1>Details</h1>
 
@@ -185,16 +187,19 @@ mark {
                                     <button class="detailsButton"> <a class="details-button-text" asp-action="Properties" style="text-decoration: none;">Back to List</a></button>
                                 </div>
                             </div>
-                        </div>
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <div class="detailsbuttonDiv">
-                                        <button class="detailsButton"> <a class="details-button-text" asp-action="Edit" asp-route-id="@Model.Id" style="text-decoration: none;">Edit</a></button>
-                                    </div>
-                                </div>
                             </div>
-                            
-                    </div>
+                            @if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin") || User.IsInRole("Owner"))
+                                {
+                                    
+                                    <div class="col-md-6">
+                                        <div class="media">
+                                            <div class="detailsbuttonDiv">
+                                                <button class="detailsButton"> <a class="details-button-text" asp-action="Edit" asp-route-id="@Model.Id" style="text-decoration: none;">Edit</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
                 </div>
             </div>
 
