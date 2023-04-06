@@ -12,8 +12,8 @@ using Real_Estate.Data;
 namespace Real_Estate.Migrations
 {
     [DbContext(typeof(RealEstateDbContext))]
-    [Migration("20230405020226_init")]
-    partial class init
+    [Migration("20230406091933_firstcommit")]
+    partial class firstcommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -242,36 +242,49 @@ namespace Real_Estate.Migrations
 
             modelBuilder.Entity("Real_Estate.Models.Appointment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Status")
+                    b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("clientId")
+                    b.Property<int?>("ClientId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ownerId")
+                    b.Property<DateTime?>("DateofAppointment")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OwnerId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("propertyId")
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PropertyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("propertytypesId")
+                    b.Property<int?>("PropertyTypesId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("clientId");
+                    b.HasIndex("ClientId");
 
-                    b.HasIndex("ownerId");
+                    b.HasIndex("OwnerId");
 
-                    b.HasIndex("propertyId");
+                    b.HasIndex("PropertyId");
 
-                    b.HasIndex("propertytypesId");
+                    b.HasIndex("PropertyTypesId");
 
                     b.ToTable("Appointment");
                 });
@@ -461,29 +474,21 @@ namespace Real_Estate.Migrations
 
             modelBuilder.Entity("Real_Estate.Models.Appointment", b =>
                 {
-                    b.HasOne("Real_Estate.Models.Client", "Clients")
+                    b.HasOne("Real_Estate.Models.Client", null)
                         .WithMany("Appointments")
-                        .HasForeignKey("clientId");
+                        .HasForeignKey("ClientId");
 
-                    b.HasOne("Real_Estate.Models.Owner", "Owners")
+                    b.HasOne("Real_Estate.Models.Owner", null)
                         .WithMany("Appointments")
-                        .HasForeignKey("ownerId");
+                        .HasForeignKey("OwnerId");
 
-                    b.HasOne("Real_Estate.Models.Property", "Property")
+                    b.HasOne("Real_Estate.Models.Property", null)
                         .WithMany("Appointments")
-                        .HasForeignKey("propertyId");
+                        .HasForeignKey("PropertyId");
 
-                    b.HasOne("Real_Estate.Models.PropertyTypes", "PropertyTypes")
+                    b.HasOne("Real_Estate.Models.PropertyTypes", null)
                         .WithMany("Appointments")
-                        .HasForeignKey("propertytypesId");
-
-                    b.Navigation("Clients");
-
-                    b.Navigation("Owners");
-
-                    b.Navigation("Property");
-
-                    b.Navigation("PropertyTypes");
+                        .HasForeignKey("PropertyTypesId");
                 });
 
             modelBuilder.Entity("Real_Estate.Models.Property", b =>

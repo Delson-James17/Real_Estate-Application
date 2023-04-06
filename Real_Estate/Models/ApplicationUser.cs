@@ -10,7 +10,5 @@ namespace Real_Estate.Models
         public int Age { get; set; }
         public DateTime? DOB { get; set; }
         public string UrlImages { get; set; }
-    
-
     }
 }

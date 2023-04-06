@@ -27,6 +27,7 @@ namespace Real_Estate.Data
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Property> Properties { get; set; }
         public DbSet<PropertyTypes> PropertyTypes { get; set; }
-        public DbSet<Appointment>? Appointment { get; set; }
+        public DbSet<Appointment> Appointment { get; set; }
+        public DbSet<ApplicationUser> Userprofiles { get; set; }
     }
 }

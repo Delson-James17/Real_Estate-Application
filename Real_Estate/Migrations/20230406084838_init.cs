@@ -28,6 +28,7 @@ namespace Real_Estate.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
@@ -241,58 +242,61 @@ namespace Real_Estate.Migrations
                 name: "Appointment",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    propertyId = table.Column<int>(type: "int", nullable: true),
-                    clientId = table.Column<int>(type: "int", nullable: true),
-                    ownerId = table.Column<int>(type: "int", nullable: true),
-                    propertytypesId = table.Column<int>(type: "int", nullable: true),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateofAppointment = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ClientId = table.Column<int>(type: "int", nullable: true),
+                    OwnerId = table.Column<int>(type: "int", nullable: true),
+                    PropertyId = table.Column<int>(type: "int", nullable: true),
+                    PropertyTypesId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Appointment", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Appointment_Clients_clientId",
-                        column: x => x.clientId,
+                        name: "FK_Appointment_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalTable: "Clients",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Appointment_Owners_ownerId",
-                        column: x => x.ownerId,
+                        name: "FK_Appointment_Owners_OwnerId",
+                        column: x => x.OwnerId,
                         principalTable: "Owners",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Appointment_Properties_propertyId",
-                        column: x => x.propertyId,
+                        name: "FK_Appointment_Properties_PropertyId",
+                        column: x => x.PropertyId,
                         principalTable: "Properties",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Appointment_PropertyTypes_propertytypesId",
-                        column: x => x.propertytypesId,
+                        name: "FK_Appointment_PropertyTypes_PropertyTypesId",
+                        column: x => x.PropertyTypesId,
                         principalTable: "PropertyTypes",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Appointment_clientId",
+                name: "IX_Appointment_ClientId",
                 table: "Appointment",
-                column: "clientId");
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Appointment_ownerId",
+                name: "IX_Appointment_OwnerId",
                 table: "Appointment",
-                column: "ownerId");
+                column: "OwnerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Appointment_propertyId",
+                name: "IX_Appointment_PropertyId",
                 table: "Appointment",
-                column: "propertyId");
+                column: "PropertyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Appointment_propertytypesId",
+                name: "IX_Appointment_PropertyTypesId",
                 table: "Appointment",
-                column: "propertytypesId");
+                column: "PropertyTypesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -19,15 +19,20 @@ namespace Real_Estate.Controllers
             _context = context;
         }
 
+        public IActionResult Appointment()
+        {
+            return View();
+        }
         // GET: Appointments
         public async Task<IActionResult> Index()
         {
-            var realEstateDbContext = _context.Appointment.Include(a => a.Clients).Include(a => a.Owners).Include(a => a.Property).Include(a => a.PropertyTypes);
-            return View(await realEstateDbContext.ToListAsync());
+              return _context.Appointment != null ? 
+                          View(await _context.Appointment.ToListAsync()) :
+                          Problem("Entity set 'RealEstateDbContext.Appointment'  is null.");
         }
 
         // GET: Appointments/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Appointment == null)
             {
@@ -35,10 +40,6 @@ namespace Real_Estate.Controllers
             }
 
             var appointment = await _context.Appointment
-                .Include(a => a.Clients)
-                .Include(a => a.Owners)
-                .Include(a => a.Property)
-                .Include(a => a.PropertyTypes)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (appointment == null)
             {
@@ -51,10 +52,6 @@ namespace Real_Estate.Controllers
         // GET: Appointments/Create
         public IActionResult Create()
         {
-            ViewData["clientId"] = new SelectList(_context.Clients, "Id", "Name");
-            ViewData["ownerId"] = new SelectList(_context.Owners, "Id", "Name");
-            ViewData["propertyId"] = new SelectList(_context.Properties, "Id", "Name");
-            ViewData["propertytypesId"] = new SelectList(_context.PropertyTypes, "Id", "Name");
             return View();
         }
 
@@ -63,7 +60,7 @@ namespace Real_Estate.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,propertyId,clientId,ownerId,propertytypesId,Status")] Appointment appointment)
+        public async Task<IActionResult> Create([Bind("Id,Name,Email,Phone,Address,DateofAppointment")] Appointment appointment)
         {
             if (ModelState.IsValid)
             {
@@ -71,15 +68,11 @@ namespace Real_Estate.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["clientId"] = new SelectList(_context.Clients, "Id", "Name", appointment.clientId);
-            ViewData["ownerId"] = new SelectList(_context.Owners, "Id", "Name", appointment.ownerId);
-            ViewData["propertyId"] = new SelectList(_context.Properties, "Id", "Name", appointment.propertyId);
-            ViewData["propertytypesId"] = new SelectList(_context.PropertyTypes, "Id", "Name", appointment.propertytypesId);
             return View(appointment);
         }
 
         // GET: Appointments/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Appointment == null)
             {
@@ -91,10 +84,6 @@ namespace Real_Estate.Controllers
             {
                 return NotFound();
             }
-            ViewData["clientId"] = new SelectList(_context.Clients, "Id", "Name", appointment.clientId);
-            ViewData["ownerId"] = new SelectList(_context.Owners, "Id", "Name", appointment.ownerId);
-            ViewData["propertyId"] = new SelectList(_context.Properties, "Id", "Name", appointment.propertyId);
-            ViewData["propertytypesId"] = new SelectList(_context.PropertyTypes, "Id", "Name", appointment.propertytypesId);
             return View(appointment);
         }
 
@@ -103,7 +92,7 @@ namespace Real_Estate.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,propertyId,clientId,ownerId,propertytypesId,Status")] Appointment appointment)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Email,Phone,Address,DateofAppointment")] Appointment appointment)
         {
             if (id != appointment.Id)
             {
@@ -130,15 +119,11 @@ namespace Real_Estate.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["clientId"] = new SelectList(_context.Clients, "Id", "Name", appointment.clientId);
-            ViewData["ownerId"] = new SelectList(_context.Owners, "Id", "Name", appointment.ownerId);
-            ViewData["propertyId"] = new SelectList(_context.Properties, "Id", "Name", appointment.propertyId);
-            ViewData["propertytypesId"] = new SelectList(_context.PropertyTypes, "Id", "Name", appointment.propertytypesId);
             return View(appointment);
         }
 
         // GET: Appointments/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Appointment == null)
             {
@@ -146,10 +131,6 @@ namespace Real_Estate.Controllers
             }
 
             var appointment = await _context.Appointment
-                .Include(a => a.Clients)
-                .Include(a => a.Owners)
-                .Include(a => a.Property)
-                .Include(a => a.PropertyTypes)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (appointment == null)
             {
@@ -162,7 +143,7 @@ namespace Real_Estate.Controllers
         // POST: Appointments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.Appointment == null)
             {
@@ -178,7 +159,7 @@ namespace Real_Estate.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AppointmentExists(int id)
+        private bool AppointmentExists(string id)
         {
           return (_context.Appointment?.Any(e => e.Id == id)).GetValueOrDefault();
         }

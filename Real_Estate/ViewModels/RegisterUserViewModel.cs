@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
@@ -36,11 +37,16 @@ namespace Real_Estate.ViewModels
         [Compare("Password", ErrorMessage = "Password and confirm password doesnt match")]
         public string ConfirmPassword { get; set; }
 
-      /* [Required]
-        public string? Role { get;set; }
+        public Guid RoleViewModelID { get; set; }
+        public RoleViewModel? RoleViewModel { get; set; } 
 
-        [ValidateNever]
-        public IEnumerable<SelectListItem>RoleList { get; set; }
-      */
+
+
+        /* [Required]
+          public string? Role { get;set; }
+
+          [ValidateNever]
+          public IEnumerable<SelectListItem>RoleList { get; set; }
+        */
     }
 }

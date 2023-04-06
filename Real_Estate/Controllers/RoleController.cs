@@ -16,6 +16,7 @@ namespace Real_Estate.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(RoleViewModel roleViewModel)
         {

@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Real_Estate.Data;
 using Real_Estate.Models;
 using Real_Estate.ViewModels;
+using System.Collections.Generic;
 
 namespace Real_Estate.Controllers
 {
@@ -17,64 +19,89 @@ namespace Real_Estate.Controllers
 
         RealEstateDbContext _context;
 
-        private AccountController()
-        {
-            _context = new RealEstateDbContext();
-        }
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
+       
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, RealEstateDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _context = context;
         }
         public IActionResult Complete()
         {
             return View();
         }
+        
         [HttpGet]
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
+            List<IdentityRole> roles = await _context.Roles.ToListAsync();
+            IdentityRole? role = roles.Where(r => r.Name == "Admin").FirstOrDefault();
+            if (role is null)
+            {
+                return View();
+            }
+            else
+            {
+                roles.Remove(role!);
+            }
+                
+            ViewBag.Roles = roles;
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterUserViewModel userViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                var userModel = new ApplicationUser
-                {
-                    Name = userViewModel.Name,
-                    Address = userViewModel.Address,
-                    Age = userViewModel.Age,
-                    DOB = userViewModel.DOB,
-                    PhoneNumber = userViewModel.PhoneNumber,
-                    UrlImages = userViewModel.UrlImages,
-                    UserName = userViewModel.Email,
-                    Email = userViewModel.Email,
-                };
-                var result = await _userManager.CreateAsync(userModel, userViewModel.Password);
-                if (result.Succeeded)
-                {
-                    var role = _roleManager.Roles.FirstOrDefault(r => r.Name == "User");
-                    if (role != null)
-                    {
-                        //var roleResult = await _userManager.AddToRolesAsync(userModel, roles.Select(s => s.Name).ToList());
-                        var roleResult = await _userManager.AddToRoleAsync(userModel, role.Name);
-                        if (!roleResult.Succeeded)
-                        {
-                            ModelState.AddModelError(String.Empty, "User Role cannot be assigned");
-                        }
-                    }
-                    await _signInManager.SignInAsync(userModel, isPersistent: false);
-                    return RedirectToAction("Complete", "Account");
 
-                }
-                foreach (var error in result.Errors)
+            try
+            {
+                if (ModelState.IsValid)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+
+                    var userModel = new ApplicationUser
+                    {
+                        Name = userViewModel.Name,
+                        Address = userViewModel.Address,
+                        Age = userViewModel.Age,
+                        DOB = userViewModel.DOB,
+                        PhoneNumber = userViewModel.PhoneNumber,
+                        UrlImages = userViewModel.UrlImages,
+                        UserName = userViewModel.Email,
+                        Email = userViewModel.Email,
+           
+                    };
+                    var result = await _userManager.CreateAsync(userModel, userViewModel.Password);
+                    if (result.Succeeded)
+                    {
+                        IdentityRole? role = await _roleManager.Roles
+                            .Where(e => e.Id == userViewModel.RoleViewModelID.ToString())
+                            .FirstOrDefaultAsync();
+                        if (role != null)
+                        {
+                            //var roleResult = await _userManager.AddToRolesAsync(userModel, roles.Select(s => s.Name).ToList());
+                            var roleResult = await _userManager.AddToRoleAsync(userModel, role.Name);
+                            if (!roleResult.Succeeded)
+                            {
+                                ModelState.AddModelError(String.Empty, "User Role cannot be assigned");
+                            }
+                        }
+                        await _signInManager.SignInAsync(userModel, isPersistent: false);
+                        return RedirectToAction("Complete", "Account");
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
                 }
+                return View(userViewModel);
             }
-            return View(userViewModel);
+            catch(Exception ex)
+            {
+                return View();
+            }
+           
         }
         
         [HttpGet]
@@ -110,6 +137,7 @@ namespace Real_Estate.Controllers
             var user = await this._userManager.GetUserAsync(this._signInManager.Context.User);
             return View(user);
         }
+
        /* [AllowAnonymous]
         [HttpGet]
         public IActionResult RegisterRoles()

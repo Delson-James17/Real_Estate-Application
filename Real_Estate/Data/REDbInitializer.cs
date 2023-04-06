@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Routing.Constraints;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Routing.Constraints;
+using Microsoft.EntityFrameworkCore;
 using Real_Estate.Models;
 
 namespace Real_Estate.Data
@@ -76,7 +78,8 @@ namespace Real_Estate.Data
                             PriceifSale = 200.00,
                             PriceifRent =20.00,
                             PropertytypesID = 1,
-                            ownerID = 1
+                            ownerID = 1,
+                            
                         },
                          new Property()
                         {
@@ -103,8 +106,11 @@ namespace Real_Estate.Data
                     }); 
                     context.SaveChanges();
                 }
+
             }
+           
             }
         }
-    }
+        }
+    
 
