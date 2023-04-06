@@ -253,7 +253,12 @@ Generic layout (demo looks)
         border-radius: 50%;
     }
 
-
+form.searchbar {
+    position: unset;
+    top: 50%;
+    left: 50%;
+}
+}
 form {
     height: 520px;
     width: 500px;

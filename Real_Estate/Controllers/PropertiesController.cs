@@ -24,16 +24,33 @@ namespace Real_Estate.Controllers
 
         // GET: Properties
         [Authorize(Roles = "Admin, Owner")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchString)
         {
-            var realEstateDbContext = _context.Properties.Include(p => p.Propertytypes).Include(p => p.owner);
-            return View(await realEstateDbContext.ToListAsync());
+            //var realEstateDbContext = _context.Properties.Include(p => p.Propertytypes).Include(p => p.owner);
+            //return View(await realEstateDbContext.ToListAsync());
+            ViewData["CurrentFilter"] = SearchString;
+            var property = from b in _context.Properties
+                           select b;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                property = property.Where(b => b.Name.Contains(SearchString) || b.Address.Contains(SearchString));
+            }
+            return View(await property.AsNoTracking().ToListAsync());
         }
        
-        public async Task<IActionResult> Properties()
+        public async Task<IActionResult> Properties(string SearchString)
         {
-            var realEstateDbContext = _context.Properties.Include(p => p.Propertytypes).Include(p => p.owner);
-            return View(await realEstateDbContext.ToListAsync());
+           // var realEstateDbContext = _context.Properties.Include(p => p.Propertytypes).Include(p => p.owner);
+            //return View(await realEstateDbContext.ToListAsync());
+
+            ViewData["CurrentFilter"] = SearchString;
+            var property = from b in _context.Properties
+                           select b;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                property = property.Where(b => b.Name.Contains(SearchString)|| b.Address.Contains(SearchString));
+            }
+            return View(await property.AsNoTracking().ToListAsync());
         }
         [Authorize(Roles = "Admin, Client, Owner")]
 

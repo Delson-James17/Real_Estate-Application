@@ -9,7 +9,12 @@
 </style>
 <body>
 <h1>Property</h1>
-
+    <form method="get" asp-action="Index">
+        <div class="form-group">
+            <input type="text" class="form-control" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    </form>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
