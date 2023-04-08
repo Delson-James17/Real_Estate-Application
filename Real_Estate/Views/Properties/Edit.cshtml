@@ -17,51 +17,51 @@
 <body class="propertyBody">
 <div class="row">
     <div class="col-md-4">
-            <form class="forms" asp-action="Edit">
-            <h3>Edit Property</h3>
+        <form asp-action="Edit">
+                <h3 class="whiteText">Edit Property</h3>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                    <label asp-for="Name" class="whiteText"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+                    <label asp-for="Description" class="whiteText"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
+                    <label asp-for="Address" class="whiteText"></label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UrlImages" class="control-label"></label>
+                    <label asp-for="UrlImages" class="whiteText"></label>
                 <input asp-for="UrlImages" class="form-control" />
                 <span asp-validation-for="UrlImages" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PriceifSale" class="control-label"></label>
+                    <label asp-for="PriceifSale" class="whiteText"></label>
                 <input asp-for="PriceifSale" class="form-control" />
                 <span asp-validation-for="PriceifSale" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PriceifRent" class="control-label"></label>
+                    <label asp-for="PriceifRent" class="whiteText"></label>
                 <input asp-for="PriceifRent" class="form-control" />
                 <span asp-validation-for="PriceifRent" class="text-danger"></span>
             </div>
           
             <div class="form-group">
-                <label asp-for="ownerID" class="control-label"></label>
+                    <label asp-for="ownerID" class="whiteText"></label>
                 <select asp-for="ownerID" class="form-control" asp-items="ViewBag.ownerID"></select>
                 <span asp-validation-for="ownerID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="buttonDiv">
+                    <button input type="submit" value="Save" class="whiteText">Save</button>
             </div>
             <div>
-                <a asp-action="Index">Back to List</a>
+                    <a asp-action="Index" class="whiteText">Back to List</a>
             </div>
         </form>
     </div>
