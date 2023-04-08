@@ -20,19 +20,19 @@
 
 </head>
 <body class="login-register-Body">
-    <form class="forms" asp-controller="Account" asp-action="Login" method="post">
-        <h3>Login Here</h3>
+<form asp-controller="Account" asp-action="Login" method="post">
+        <h3 class="whiteText">Login Here</h3>
 
-        <label for="username">Email</label>
+        <label for="username" class="whiteText">Email</label>
         <input asp-for="Email" id="form3Example3cg" class="form-control form-control-lg" placeholder="Email" />
-        <span asp-validation-for="Email"></span>
+        <span asp-validation-for="Email" class="whiteText"></span>
 
 
-        <label for="password">Password</label>
+        <label for="password" class="whiteText">Password</label>
         <input asp-for="Password" id="form3Example4cg" class="form-control form-control-lg" placeholder="Password" />
-        <span asp-validation-for="Password"></span>
+        <span asp-validation-for="Password" class="whiteText"></span>
         <div class="buttonDiv">
-            <button>Login</button>
+            <button class="whiteText">Login</button>
         </div>
 
     </form>
