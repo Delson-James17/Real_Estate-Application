@@ -10,11 +10,77 @@
     <link rel="stylesheet" href="~/Real_Estate.styles.css" asp-append-version="true" />
 
     @inject SignInManager<ApplicationUser> _signInManager
+
+    <style>
+
+    </style>
+
+
+
+
+
 </head>
 <body>
-
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav>
+            <ul>
+                <div class="logo">
+                    <img class="propertyImage" src="~/lib/img/logo.png">
+                </div>
+                <hr>
+                <li><a asp-area="" asp-controller="Properties" asp-action="Properties">Home</a></li>
+                @if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin") || User.IsInRole("Owner"))
+                {
+                    <li>
+                        <a asp-area="" asp-controller="" asp-action="">Property Creation </a>
+                        <ul>
+                            <li> <a asp-area="" asp-controller="Properties" asp-action="Create">Create Property</a></li>
+                            <li> <a asp-area="" asp-controller="Properties" asp-action="Index">All Property</a></li>
+
+                        </ul>
+                    </li>
+                }
+                @if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <li>
+                        <a asp-area="" asp-controller="PropertyTypes" asp-action="Index">Property Types</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Users" asp-action="GetAllUsers">Users </a>
+                    </li>
+
+                    <li>
+                        <a asp-area="" asp-controller="" asp-action="">Appointment </a>
+                        <ul>
+                            <li> <a asp-area="" asp-controller="Appointments" asp-action="Create">Create Appointment</a></li>
+                            <li> <a asp-area="" asp-controller="Appointments" asp-action="Index">All Apointment</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="" asp-action="">Roles      </a>
+                        <ul>
+                            <li> <a asp-controller="Role" asp-action="Create">Create Role</a></li>
+                            <li> <a asp-controller="Role" asp-action="GetAllRoles">All Roles </a></li>
+                        </ul>
+                    </li>
+
+
+
+                }
+
+                <span class="navbar-right-side" style="float:right;">
+                    <ul>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                        <li>
+                            <a asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                        </li>
+                    </ul>
+                </span>
+
+            </ul>
+        </nav>
+@*        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Real_Estate</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -90,7 +156,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>*@
         
     </header>
     <div class="container">
