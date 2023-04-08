@@ -9,7 +9,7 @@ namespace Real_Estate.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public List<Appointment>? Appointments { get; set; }
+
         public List<Property>? Properties { get; set; }
     }
 }

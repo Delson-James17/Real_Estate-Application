@@ -18,7 +18,10 @@ namespace Real_Estate.Controllers
         {
             _context = context;
         }
-
+        public IActionResult Sample()
+        {
+            return View();
+        }
         public IActionResult Appointment()
         {
             return View();

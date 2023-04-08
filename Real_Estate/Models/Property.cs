@@ -17,7 +17,7 @@ namespace Real_Estate.Models
         [ForeignKey("PropertytypesId")]
         public int? PropertytypesID { get; set; }
         public PropertyTypes? Propertytypes { get; set; }
-        public List<Appointment>? Appointments { get; set; }
+        
 
         public int? ownerID { get; set; }
         public Owner? owner { get; set; }
