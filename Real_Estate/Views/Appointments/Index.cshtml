@@ -1,31 +1,31 @@
-﻿@model IEnumerable<Real_Estate.Models.Appointment>
+@model IEnumerable<Real_Estate.Models.Appointment>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@*<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+</p>*@
+@*<table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Property)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.Clients)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Phone)
+                @Html.DisplayNameFor(model => model.Owners)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                @Html.DisplayNameFor(model => model.PropertyTypes)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateofAppointment)
+                @Html.DisplayNameFor(model => model.Status)
             </th>
             <th></th>
         </tr>
@@ -34,19 +34,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Property.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(modelItem => item.Clients.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Phone)
+                @Html.DisplayFor(modelItem => item.Owners.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Address)
+                @Html.DisplayFor(modelItem => item.PropertyTypes.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateofAppointment)
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -56,4 +56,114 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
+
+
+
+
+
+
+
+
+
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="C:\Users\COLLABERA\Desktop\Capstone01\Real_Estate\wwwroot\css\site.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<style>
+    h2 {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .table-bordered {
+        border: 1px solid #ddd !important;
+    }
+
+    table caption {
+        padding: .5em 0;
+    }
+
+    table caption {
+        display: none;
+    }
+
+
+    .p {
+        text-align: center;
+        padding-top: 140px;
+        font-size: 14px;
+    }
+
+    td {
+        color: #ffff;
+    }
+
+    th {
+        color: #ffff;
+    }
+</style>
+
+
+<body class="PropertyListBody">
+    <h1 class="whiteText" style="text-align:center;">Appointments</h1>
+
+    <p>
+        <button> <a class="whiteText" asp-action="Create">Create New Appointment</a></button>
+
+    </p>
+
+    <table>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-responsive" data-pattern="priority-columns">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Property)</th>
+                                    <th data-priority="1">@Html.DisplayNameFor(model => model.Clients)</th>
+                                    <th data-priority="2">@Html.DisplayNameFor(model => model.Owners)</th>
+                                    <th data-priority="3">@Html.DisplayNameFor(model => model.PropertyTypes)</th>
+                                    <th data-priority="4">@Html.DisplayNameFor(model => model.Status)</th>
+                                    <th data-priority="5">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Property.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Clients.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Owners.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PropertyTypes.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+                                        <td>
+                                            <button><a asp-action="Edit" asp-route-id="@item.Id" class="whiteText">Edit</a></button>
+                                            <button><a asp-action="Details" asp-route-id="@item.Id" class="whiteText">Details</a></button>
+                                            <button><a asp-action="Delete" asp-route-id="@item.Id" class="whiteText">Delete</a></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div><!--end of .table-responsive-->
+                </div>
+            </div>
+        </div>
+    </table>
+</body>
+
