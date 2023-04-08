@@ -1,10 +1,10 @@
-﻿@model Real_Estate.Models.Appointment
+@model Real_Estate.Models.Appointment
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+@*<h1>Create</h1>
 
 <h4>Appointment</h4>
 <hr />
@@ -13,34 +13,25 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
+                <label asp-for="propertyId" class="control-label"></label>
+                <select asp-for="propertyId" class ="form-control" asp-items="ViewBag.propertyId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="clientId" class="control-label"></label>
+                <select asp-for="clientId" class ="form-control" asp-items="ViewBag.clientId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                <label asp-for="ownerId" class="control-label"></label>
+                <select asp-for="ownerId" class ="form-control" asp-items="ViewBag.ownerId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
+                <label asp-for="propertytypesId" class="control-label"></label>
+                <select asp-for="propertytypesId" class ="form-control" asp-items="ViewBag.propertytypesId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateofAppointment" class="control-label"></label>
-                <input asp-for="DateofAppointment" class="form-control" />
-                <span asp-validation-for="DateofAppointment" class="text-danger"></span>
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -51,7 +42,59 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
+
+
+
+<html lang="en">
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Glassmorphism login Form Tutorial in html css</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    @*    <link href="~/css/site.css" rel="stylesheet" />*@
+    <!--Stylesheet-->
+
+</head>
+<body class="login-register-Body">
+    <form asp-action="Create">
+        <h3 class="whiteText">Create Appointment</h3>
+
+        <label for="username" class="whiteText">Property ID</label>
+        <select asp-for="propertyId" class="form-control" asp-items="ViewBag.propertyId"></select>
+
+        <label for="username" class="whiteText">Client ID</label>
+        <select asp-for="propertyId" class="form-control" asp-items="ViewBag.clientId"></select>
+
+
+        <label for="username" class="whiteText">Owner ID</label>
+        <select asp-for="ownerId" class="form-control" asp-items="ViewBag.ownerId"></select>
+
+
+        <label for="username" class="whiteText">Property Type ID</label>
+        <select asp-for="propertytypesId" class="form-control" asp-items="ViewBag.propertytypesId"></select>
+
+        <div class="buttonDiv">
+            <button type="submit">Create</button>
+        </div>
+
+        <div>
+            <a asp-action="Index" class="whiteText">Back to List</a>
+        </div>
+
+    </form>
+</body>
+
+
+
+
+
+</html>
+
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
