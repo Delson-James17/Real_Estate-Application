@@ -1,19 +1,29 @@
-﻿@model Real_Estate.Models.PropertyTypes
+@model Real_Estate.Models.PropertyTypes
 
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Glassmorphism login Form Tutorial in html css</title>
 
-<h4>PropertyTypes</h4>
-<hr />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    @*    <link href="~/css/site.css" rel="stylesheet" />*@
+    <!--Stylesheet-->
+
+</head>
+
+
+<body class="login-register-Body">
 <div class="row">
     <div class="col-md-4">
-        <form class="forms"  asp-action="Create">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+@*            <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
@@ -25,14 +35,34 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+            </div>*@
+
+
+
+
+            <h3 class="whiteText">Create Property Type</h3>
+
+            <label for="username" class="whiteText">Name</label>
+            <input asp-for="Name" id="form3Example3cg" class="form-control form-control-lg" placeholder="Email" />
+            <span asp-validation-for="Name" class="whiteText"></span>
+
+
+            <label for="password" class="whiteText">Description</label>
+            <input asp-for="Description" id="form3Example4cg" class="form-control form-control-lg" placeholder="Password" />
+            <span asp-validation-for="Description" class="whiteText"></span>
+            <div class="buttonDiv">
+                <button class="whiteText">Create</button>
             </div>
+                <div class="buttonDiv">
+                    <a asp-action="Index" class="whiteText">Back to List</a>
+                </div>
+
+
         </form>
     </div>
 </div>
+</body>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
