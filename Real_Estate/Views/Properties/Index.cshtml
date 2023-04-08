@@ -7,14 +7,19 @@
 
 
 </style>
+<header>
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</header>
 <body>
 <h1>Property</h1>
-    <form method="get" asp-action="Index">
-        <div class="form-group">
-            <input type="text" class="form-control" name="SearchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Search" class="btn btn-primary" />
-        </div>
-    </form>
+ <form class="searchbar" method="get" asp-action="Index">
+        <div class="form-group1" style="display:flex;align-items: flex-end; ">
+                <input type="text" class="form-control" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                 <button type="submit" style="padding:10px; margin-left:10px;"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
 <p>
     <a asp-action="Create">Create New</a>
 </p>

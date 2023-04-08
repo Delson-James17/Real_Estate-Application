@@ -253,13 +253,8 @@ Generic layout (demo looks)
         border-radius: 50%;
     }
 
-form.searchbar {
-    position: unset;
-    top: 50%;
-    left: 50%;
-}
-}
-form {
+
+.forms {
     height: 520px;
     width: 500px;
     position: absolute;
@@ -267,6 +262,11 @@ form {
     top: 50%;
     left: 50%;
 }
+.searchbar {
+        position: unset;
+        top: 50%;
+        left: 50%;
+    }
 
     form * {
         font-family: 'Poppins',sans-serif;

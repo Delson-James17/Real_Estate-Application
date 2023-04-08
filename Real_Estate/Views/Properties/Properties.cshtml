@@ -29,10 +29,10 @@
          </div>
     </div>
     
-        <form class="searchbar" method="get" asp-action="Index">
-            <div class="form-group">
+        <form class="searchbar" method="get" asp-action="Properties">
+        <div class="form-group1" style="display:flex;align-items: flex-end; ">
                 <input type="text" class="form-control" name="SearchString" value="@ViewData["CurrentFilter"]" />
-                <input type="submit" value="Search" class="btn btn-primary" />
+                 <button type="submit" style="padding:10px; margin-left:10px;"><i class="fa fa-search"></i></button>
             </div>
         </form>
    
